@@ -20,9 +20,9 @@
 
 ### Для запуска авто-тестов в Jenkins
 
-#### 1. Открыть <a target="_blank" href="https://jenkins.autotests.cloud/job/qa_g_diplome/">проект</a>
+#### 1. Открыть <a target="_blank" href="https://jenkins.autotests.cloud/job/qa-g-rest-api/">проект</a>
 
-![This is an image](/images/jenfins_project_main.png)
+![This is an image](/images/jenkins_project_main.png)
 
 #### 2. Выбрать пункт **Build with Parameters**
 
