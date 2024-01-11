@@ -40,7 +40,7 @@
 
 #### 7. Информация о завершении сборки так же будет опубликована в telegram на канале
 
-![This is an image](/images/notiffication_example.png)
+![This is an image](/images/notification_example.png)
 
 ## Запуск авто-тестов
 
@@ -58,5 +58,3 @@ pytest -vv -s .
 ```bash
 allure serve allure-results
 ```
-
-:heart: <a target="_blank" href="https://qa.guru">qa.guru</a><br/>
