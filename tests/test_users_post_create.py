@@ -1,12 +1,14 @@
-import jsonschema as jsonschema
 import allure
 import requests
 import json
+import jsonschema as jsonschema
 from allure_commons.types import Severity
-
 from utils.resource import load_schema
+from utils.log_extending import step
+from utils.allure_attach import response_logging, response_attaching
 
 
+@step
 def test_correct_execution(get_base_api_url):
     allure.dynamic.tag("api")
     allure.dynamic.severity(Severity.BLOCKER)
@@ -20,14 +22,17 @@ def test_correct_execution(get_base_api_url):
 
     # ACTIONS (WHEN)
     response = requests.post(test_url, data=body)
+    response_logging(response)
+    response_attaching(response)
 
     # ASSERT (THEN)
     assert response.status_code == 201
-    assert response.json()['name'] == 'morpheus1'
-    assert response.json()['job'] == 'leader_new'
+    assert response.json()["name"] == "morpheus1"
+    assert response.json()["job"] == "leader_new"
     jsonschema.validate(instance=response.json(), schema=test_schema)
 
 
+@step
 def test_execution_with_name_only(get_base_api_url):
     allure.dynamic.tag("api")
     allure.dynamic.severity(Severity.BLOCKER)
@@ -41,8 +46,10 @@ def test_execution_with_name_only(get_base_api_url):
 
     # ACTIONS (WHEN)
     response = requests.post(test_url, data=body)
+    response_logging(response)
+    response_attaching(response)
 
     # ASSERT (THEN)
     assert response.status_code == 201
-    assert response.json()['name'] == 'morpheus1'
+    assert response.json()["name"] == "morpheus1"
     jsonschema.validate(instance=response.json(), schema=test_schema)

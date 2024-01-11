@@ -1,12 +1,14 @@
-import jsonschema as jsonschema
 import allure
 import requests
 import pytest
+import jsonschema as jsonschema
 from allure_commons.types import Severity
-
 from utils.resource import load_schema
+from utils.log_extending import step
+from utils.allure_attach import response_logging, response_attaching
 
 
+@step
 @pytest.mark.parametrize("id_", [1, 2])
 def test_correct_execution_for_page_(get_base_api_url, id_):
     allure.dynamic.tag("api")
@@ -20,6 +22,8 @@ def test_correct_execution_for_page_(get_base_api_url, id_):
 
     # ACTIONS (WHEN)
     response = requests.get(test_url)
+    response_logging(response)
+    response_attaching(response)
 
     # ASSERT (THEN)
     assert response.status_code == 200
@@ -27,6 +31,7 @@ def test_correct_execution_for_page_(get_base_api_url, id_):
     jsonschema.validate(instance=response.json(), schema=test_schema)
 
 
+@step
 def test_execution_with_miss_print_url_return_first_page(get_base_api_url):
     allure.dynamic.tag("api")
     allure.dynamic.severity(Severity.BLOCKER)
@@ -40,6 +45,8 @@ def test_execution_with_miss_print_url_return_first_page(get_base_api_url):
 
     # ACTIONS (WHEN)
     response = requests.get(test_url)
+    response_logging(response)
+    response_attaching(response)
 
     # ASSERT (THEN)
     assert response.status_code == 200
@@ -62,6 +69,8 @@ def test_execution_with_huge_page(get_base_api_url):
 
     # ACTIONS (WHEN)
     response = requests.get(test_url)
+    response_logging(response)
+    response_attaching(response)
 
     # ASSERT (THEN)
     assert response.status_code == 200
