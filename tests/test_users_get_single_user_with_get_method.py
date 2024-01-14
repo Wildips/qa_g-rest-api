@@ -2,9 +2,9 @@ import allure
 import requests
 import jsonschema as jsonschema
 from allure_commons.types import Severity
-from utils.resource import load_schema
-from utils.log_extending import step
-from utils.allure_attach import response_logging, response_attaching
+from qa_g_rest_api_tests.utils.resource import load_schema
+from qa_g_rest_api_tests.utils.log_extending import step
+from qa_g_rest_api_tests.utils.allure_attach import response_logging, response_attaching
 
 USER_ID = 2
 
