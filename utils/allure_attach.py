@@ -15,12 +15,14 @@ def response_logging(response: Response):
 
 
 def response_attaching(response: Response):
-    if response:
-        allure.attach(
-            body=response.request.url,
-            name="Request url",
-            attachment_type=AttachmentType.TEXT,
-        )
+
+    allure.attach(
+        body=response.request.url,
+        name="Request url",
+        attachment_type=AttachmentType.TEXT,
+    )
+
+    if response.request.body:
         allure.attach(
             body=json.dumps(response.request.body, indent=4, ensure_ascii=True),
             name="Request body",
