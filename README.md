@@ -58,3 +58,7 @@ pytest -vv -s .
 ```bash
 allure serve allure-results
 ```
+
+#### 9. Так же результаты выполнения будут транслированы в Jira
+
+![This is an image](/images/jira_integration.png)
