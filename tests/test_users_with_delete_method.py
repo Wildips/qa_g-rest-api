@@ -23,7 +23,7 @@ def test_correct_execution(get_base_api_url, create_test_user):
 
     # ASSERT (THEN)
     assert response.status_code == 204
-    assert response.text == "{}"
+    assert response.text == ""
 
 
 @step
@@ -44,4 +44,4 @@ def test_execution_with_unknown_id(get_base_api_url):
 
     # ASSERT (THEN)
     assert response.status_code == 204
-    assert response.text == "{}"
+    assert response.text == ""
